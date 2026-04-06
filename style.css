@@ -1,0 +1,115 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --bg-main: #696969;
+    --bg-calculator: #a9a9a9;
+    --bg-screen: #d3d3d3;
+
+    --text-primary: #000000;
+    --text-secondary: #f1f5f9;
+    --text-white: #ffffff;
+
+    --btn-main: #f8f8ff;
+    --btn-operators: #6d6d6d;
+    --btn-clear: #494949;
+    --btn-hover: #000000;
+
+    --border-radius: 12px;
+    --shadow-main: 2px 2px 3px rgba(255, 255, 255, 0.527);
+
+    --font: "Oswald";
+}
+
+body {
+    min-height: 96vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font), serif;
+}
+
+#calculator {
+    background: var(--bg-calculator);
+    border-radius: var(--border-radius);
+    width: 400px;
+    height: 500px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#screen {
+    width: 95%;
+    height: 25%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: var(--bg-screen);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#screen #count {
+    height: 30%;
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+#screen #result {
+    height: 70%;
+    text-align: right;
+    font-size: 3rem;
+}
+
+.rowOfButtons {
+    width: 95%;
+    height: 15%;
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    width: 23%;
+    cursor: pointer;
+    border: none;
+    font-size: 2em;
+    border-radius: var(--border-radius);
+    font-family: var(--font), serif;
+}
+
+.btn#number {
+    background-color: var(--btn-main);
+    color: var(--text-primary);
+}
+
+.btn.operator, .btn#equal {
+    background-color: var(--btn-operators);
+    color: var(--text-white);
+}
+
+.btn#ac {
+    width: 49%;
+}
+
+.btn#ac, .btn#del {
+    background-color: var(--btn-clear);
+    color: var(--text-white);
+}
+
+.btn:hover, .btn.operator:hover, .btn#equal:hover, .btn#ac:hover, .btn#del:hover {
+    background-color: var(--btn-hover);
+    color: var(--text-white);
+}
