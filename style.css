@@ -62,7 +62,7 @@ body {
     gap: 10px;
 }
 
-#screen #count {
+#screen #expression {
     height: 30%;
     text-align: right;
     font-size: 1.5rem;

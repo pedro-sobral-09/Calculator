@@ -5,10 +5,22 @@ const btnDel = document.querySelector("#del");
 const btnAc = document.querySelector("#ac");
 const btnEqual = document.querySelector("#equal");
 
+// Variables of Screen
+const resultScreen = document.querySelector("#result");
+const expressionScreen = document.querySelector("#expression");
+
 // Operation variables
 let currentValue = "";
 let previousValue = "";
 let operator = null;
+
+function updateExpressionScreen(...valueScreen){
+    expressionScreen.textContent = valueScreen.join(" ");
+}
+
+function updateResultScreen(valueScreen){
+    resultScreen.textContent = valueScreen;
+}
 
 function operate (num1, num2, operator) {
     if (operator == "+"){
@@ -23,12 +35,11 @@ function operate (num1, num2, operator) {
 }
 
 function handleNumberClick(btnValue) {
-    
     // Checks if a number is float
     if (currentValue.includes(".") && btnValue == ".") return;
 
     currentValue += btnValue;
-    console.log(currentValue);
+    updateResultScreen(currentValue);
 }
 
 function handleOperatorClick(btnValue) {
@@ -53,10 +64,17 @@ function handleOperatorClick(btnValue) {
             operator = btnValue;
         }
     }
+    
+    updateExpressionScreen(previousValue, operator)
 }
 
 function handleEqualClick() {
+    updateExpressionScreen(previousValue, operator, currentValue, "=");
+    
     currentValue = operate(+previousValue, +currentValue, operator).toString();
+    
+    updateResultScreen(currentValue);
+    
     previousValue = "";
     operator = null;
 }
@@ -75,9 +93,7 @@ function main() {
         });
     });
 
-    btnEqual.addEventListener("click", (btn) => {
-        handleEqualClick(btn.textContent);
-    });
+    btnEqual.addEventListener("click", (btn) => handleEqualClick());
 }
 
 main();
