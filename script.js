@@ -71,7 +71,7 @@ function handleOperatorClick(btnValue) {
 function handleEqualClick() {
     updateExpressionScreen(previousValue, operator, currentValue, "=");
     
-    currentValue = operate(+previousValue, +currentValue, operator).toString();
+    currentValue = "" + operate(+previousValue, +currentValue, operator);
     
     updateResultScreen(currentValue);
     
@@ -79,8 +79,22 @@ function handleEqualClick() {
     operator = null;
 }
 
+function handleAllClearClick() {
+    currentValue = "";
+    previousValue = "";
+    operator = null;
+    updateExpressionScreen(currentValue);
+    updateResultScreen(currentValue);
+}
+
+function handleDelClick() {
+    currentValue = currentValue.slice(0, -1);
+    updateResultScreen(currentValue);
+}
+
 function main() {
     
+    // Button events 
     btnNumber.forEach((btn) => {
         btn.addEventListener("click", () => {
             handleNumberClick(btn.textContent);
@@ -93,7 +107,11 @@ function main() {
         });
     });
 
-    btnEqual.addEventListener("click", (btn) => handleEqualClick());
+    btnEqual.addEventListener("click", handleEqualClick);
+
+    btnAc.addEventListener("click", handleAllClearClick);
+
+    btnDel.addEventListener("click", handleDelClick);
 }
 
 main();
