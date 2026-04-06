@@ -24,11 +24,6 @@ function updateResultScreen(valueScreen){
 }
 
 function operate (num1, num2, operator) {
-    // Checks if it's possible to calculate
-    if (!previousValue){
-        return currentValue;
-    }
-    
     if (operator == "+"){
         return num1 + num2;
     } else if (operator == "-"){
@@ -82,14 +77,19 @@ function handleOperatorClick(btnValue) {
 }
 
 function handleEqualClick() {
-    updateExpressionScreen(previousValue, operator, currentValue, "=");
-    
-    currentValue = "" + operate(+previousValue, +currentValue, operator);
-    
-    updateResultScreen(currentValue);
-    
-    previousValue = "";
-    operator = null;
+    // Validate the expression before calculating
+    if (previousValue && currentValue) {
+        updateExpressionScreen(previousValue, operator, currentValue, "=");
+
+        currentValue = "" + operate(+previousValue, +currentValue, operator);
+
+        updateResultScreen(currentValue);
+
+        previousValue = "";
+        operator = null;
+    } else {
+        alert("Enter the right expression");
+    }
 }
 
 function handleAllClearClick() {
