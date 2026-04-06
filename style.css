@@ -95,7 +95,7 @@ body {
     color: var(--text-primary);
 }
 
-.btn.operator, .btn#equal {
+.btn.operator, .btn#equal, .btn#special {
     background-color: var(--btn-operators);
     color: var(--text-white);
 }
@@ -109,7 +109,7 @@ body {
     color: var(--text-white);
 }
 
-.btn:hover, .btn.operator:hover, .btn#equal:hover, .btn#ac:hover, .btn#del:hover {
+.btn:hover, .btn.operator:hover, .btn#equal:hover, .btn#ac:hover, .btn#del:hover, .btn#special:hover {
     background-color: var(--btn-hover);
     color: var(--text-white);
 }

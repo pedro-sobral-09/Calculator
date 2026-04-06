@@ -4,6 +4,7 @@ const btnOperator = document.querySelectorAll(".operator");
 const btnDel = document.querySelector("#del");
 const btnAc = document.querySelector("#ac");
 const btnEqual = document.querySelector("#equal");
+const btnSpecial = document.querySelector("#special");
 
 // Variables of Screen
 const resultScreen = document.querySelector("#result");
@@ -23,6 +24,11 @@ function updateResultScreen(valueScreen){
 }
 
 function operate (num1, num2, operator) {
+    // Checks if it's possible to calculate
+    if (!previousValue){
+        return currentValue;
+    }
+    
     if (operator == "+"){
         return num1 + num2;
     } else if (operator == "-"){
@@ -35,6 +41,13 @@ function operate (num1, num2, operator) {
 }
 
 function handleNumberClick(btnValue) {
+    // If "=" is present, it means the last operation finished — start a new expression
+    if (expressionScreen.textContent.includes("=")) {
+        currentValue = ""
+        updateExpressionScreen(currentValue);
+        updateResultScreen(currentValue);
+    }
+    
     // Checks if a number is float
     if (currentValue.includes(".") && btnValue == ".") return;
 
@@ -51,7 +64,7 @@ function handleOperatorClick(btnValue) {
         previousValue = currentValue;
         currentValue = "";
     } else if (operator != null) {
-        
+
         // Check if we should perform the calculation or just update the operator
         if (currentValue && previousValue) {
             btnEqual.click();
@@ -92,6 +105,12 @@ function handleDelClick() {
     updateResultScreen(currentValue);
 }
 
+function handleSpecialClick(){
+    currentValue = String(-Number(currentValue));
+    
+    updateResultScreen(currentValue);
+}
+
 function main() {
     
     // Button events 
@@ -112,6 +131,8 @@ function main() {
     btnAc.addEventListener("click", handleAllClearClick);
 
     btnDel.addEventListener("click", handleDelClick);
+
+    btnSpecial.addEventListener("click", handleSpecialClick);
 }
 
 main();
