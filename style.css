@@ -31,6 +31,8 @@
 body {
     min-height: 96vh;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     background: var(--bg-main);
@@ -52,7 +54,7 @@ body {
 
 #screen {
     width: 95%;
-    height: 25%;
+    height: 30%;
     padding: 10px;
     margin-bottom: 15px;
     background: var(--bg-screen);
@@ -63,20 +65,18 @@ body {
 }
 
 #screen #expression {
-    height: 30%;
     text-align: right;
     font-size: 1.5rem;
 }
 
 #screen #result {
-    height: 70%;
     text-align: right;
     font-size: 3rem;
 }
 
 .rowOfButtons {
     width: 95%;
-    height: 15%;
+    height: 14%;
     display: flex;
     gap: 12px;
 }
@@ -90,7 +90,7 @@ body {
     font-family: var(--font), serif;
 }
 
-.btn#number {
+.btn.number {
     background-color: var(--btn-main);
     color: var(--text-primary);
 }
@@ -112,4 +112,21 @@ body {
 .btn:hover, .btn.operator:hover, .btn#equal:hover, .btn#ac:hover, .btn#del:hover, .btn#special:hover {
     background-color: var(--btn-hover);
     color: var(--text-white);
+}
+
+#author {
+    font-family: var(--font);
+    padding: 10px;
+    background-color: var(--btn-hover);
+    color: var(--text-white);
+    border-radius: var(--border-radius);
+}
+
+#author a {
+    text-decoration: none;
+    color: white;
+}
+
+#author a:hover {
+    text-decoration: underline;
 }
